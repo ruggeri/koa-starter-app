@@ -5,12 +5,17 @@ import { Cat } from "../models/cat";
 const catsRouter = new Router();
 
 catsRouter.get("/", async (ctx: Context) => {
-  const cats = Cat.find();
+  const cats = await Cat.find();
   ctx.body = cats;
 });
 
 catsRouter.get("/:id", async (ctx: Context) => {
-  ctx.body = `Show for cat #${ctx.params.id}.`;
+  const cat = await Cat.findOne({ id: ctx.params.id });
+  if (cat) {
+    ctx.body = cat;
+  } else {
+    ctx.status = 404;
+  }
 });
 
 export default catsRouter;
