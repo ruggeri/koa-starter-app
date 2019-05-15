@@ -1,0 +1,8 @@
+{
+  "name": "koa-starter-app",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "node app.js"
+  }
+}
