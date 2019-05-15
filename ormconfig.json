@@ -1,0 +1,16 @@
+{
+  "type": "postgres",
+  "database": "koa_starter_app",
+  "synchronize": false,
+  "logging": true,
+  "entities": [
+    "src/models/**/*.ts"
+  ],
+  "migrations": [
+    "src/migrations/**/*.ts"
+  ],
+  "cli": {
+    "entitiesDir": "src/models",
+    "migrationsDir": "src/migrations"
+  }
+}

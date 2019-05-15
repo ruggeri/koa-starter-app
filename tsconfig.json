@@ -4,8 +4,10 @@
     "target": "es2017",
     "noImplicitAny": true,
     "outDir": "./dist",
-    "sourceMap": true
-  },
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+},
   "include": [
     "app.ts",
     "./src/**/*"

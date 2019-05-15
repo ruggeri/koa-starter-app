@@ -1,10 +1,19 @@
 import * as Koa from 'koa';
 import rootRouter from './src/routes';
+import { createConnection } from 'typeorm';
 
-const app = new Koa();
+async function main() {
+  // Initialize typeorm database connection.
+  await createConnection();
 
-app.use(rootRouter.routes());
+  // Initialize Koa application.
+  const app = new Koa();
+  app.use(rootRouter.routes());
 
-app.listen(3000);
+  // Begin serving application.
+  app.listen(3000);
 
-console.log("Server running on port 3000!");
+  console.log("Server running on port 3000!");
+}
+
+main();

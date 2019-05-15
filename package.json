@@ -3,14 +3,24 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "serve": "nodemon --watch dist dist/app.js",
-    "start:dev": "concurrently npm:watch:ts npm:serve",
-    "watch:ts": "tsc -w"
+    "serve": "./node_modules/.bin/nodemon --watch dist dist/app.js",
+    "start:dev": "./node_modules/.bin/concurrently npm:watch:ts npm:serve",
+    "watch:ts": "tsc -w",
+    "typeorm": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm"
   },
   "dependencies": {
     "@types/koa": "^2.0.48",
     "@types/koa-router": "^7.0.40",
     "koa": "^2.7.0",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "pg": "^7.11.0",
+    "reflect-metadata": "^0.1.10",
+    "typeorm": "^0.2.17"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.19.0",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
   }
 }
