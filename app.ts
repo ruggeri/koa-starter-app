@@ -1,15 +1,9 @@
-import { Context } from 'koa';
 import * as Koa from 'koa';
-import * as Router from 'koa-router';
+import rootRouter from './src/routes';
 
 const app = new Koa();
-const router = new Router();
 
-router.get("/", async (ctx: Context) => {
-  ctx.body = "Hello world!";
-});
-
-app.use(router.routes());
+app.use(rootRouter.routes());
 
 app.listen(3000);
 
