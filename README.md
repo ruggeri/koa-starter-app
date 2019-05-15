@@ -8,7 +8,13 @@
 * `yarn start:dev` runs both concurrently.
 
 * Using `koa` (next generation of Express).
+    * Using `koa-router` and `koa-bodyparser`.
 
 * Setup `typeorm` and migrations.
 * Setup `tslint` (still must run `yarn run tslint --fix`)...
   * But can install `tslint` for VSCode so that this auto highlights...
+
+* I want to try out associations probably.
+* I want to add React in.
+* I want to add Next.
+* I want to look into GraphQL.
