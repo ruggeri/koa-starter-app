@@ -1,6 +1,8 @@
 import { Context } from "koa";
 import * as Router from "koa-router";
+import { getManager } from "typeorm";
 import { Cat } from "../models/cat";
+import { Friendship } from "../models/friendship";
 
 const catsRouter = new Router();
 
@@ -10,7 +12,11 @@ catsRouter.get("/", async (ctx: Context) => {
 });
 
 catsRouter.get("/:id", async (ctx: Context) => {
-  const cat = await Cat.findOne({ id: ctx.params.id });
+  const cat = await Cat.findOne(
+    ctx.params.id,
+    { relations: ["friends"] },
+  );
+
   if (cat) {
     ctx.body = cat;
   } else {
@@ -28,6 +34,28 @@ catsRouter.post("/", async (ctx: Context) => {
 
   await cat.save();
   ctx.body = cat;
+});
+
+catsRouter.post("/:id/friendships", async (ctx: Context) => {
+  const friendship1 = Friendship.create({
+    friendId1: ctx.params.id,
+    friendId2: ctx.request.body.friendId,
+  });
+
+  const friendship2 = Friendship.create({
+    friendId1: ctx.request.body.friendId,
+    friendId2: ctx.params.id,
+  });
+
+  await getManager().transaction(async (manager) => {
+    await manager.save(friendship1);
+    await manager.save(friendship2);
+  });
+
+  ctx.body = [
+    friendship1,
+    friendship2,
+  ];
 });
 
 export default catsRouter;

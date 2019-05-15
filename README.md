@@ -14,7 +14,7 @@
 * Setup `tslint` (still must run `yarn run tslint --fix`)...
   * But can install `tslint` for VSCode so that this auto highlights...
 
-* I want to try out associations probably.
+* How can I best specify whether a property should be in params?
 * I want to add React in.
 * I want to add Next.
 * I want to look into GraphQL.
