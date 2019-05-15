@@ -7,7 +7,7 @@ export class CreateCats1557945380731 implements MigrationInterface {
       columns: [
         {
           name: "id",
-          type: "int",
+          type: "serial",
           isNullable: false,
           isPrimary: true,
         },
@@ -31,6 +31,6 @@ export class CreateCats1557945380731 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<any> {
-    queryRunner.dropTable("cats");
+    await queryRunner.dropTable("cats");
   }
 }
