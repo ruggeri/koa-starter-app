@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "start:dev": "node app.js"
+    "serve": "nodemon --watch dist dist/app.js",
+    "start:dev": "concurrently npm:watch:ts npm:serve",
+    "watch:ts": "tsc -w"
+  },
+  "dependencies": {
+    "@types/koa": "^2.0.48",
+    "@types/koa-router": "^7.0.40",
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0"
   }
 }
