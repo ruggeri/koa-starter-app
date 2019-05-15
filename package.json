@@ -4,15 +4,17 @@
   "license": "MIT",
   "scripts": {
     "serve": "./node_modules/.bin/nodemon --watch dist dist/app.js",
-    "start:dev": "./node_modules/.bin/concurrently npm:watch:ts npm:serve",
+    "start:dev": "./node_modules/.bin/tsc && ./node_modules/.bin/concurrently npm:watch:ts npm:serve",
     "tslint": "./node_modules/.bin/tslint -p .",
     "typeorm": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm",
     "watch:ts": "./node_modules/.bin/tsc -w"
   },
   "dependencies": {
     "@types/koa": "^2.0.48",
+    "@types/koa-bodyparser": "^4.2.2",
     "@types/koa-router": "^7.0.40",
     "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "pg": "^7.11.0",
     "reflect-metadata": "^0.1.10",
