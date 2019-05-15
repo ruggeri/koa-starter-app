@@ -5,7 +5,8 @@ import { Cat } from "../models/cat";
 const catsRouter = new Router();
 
 catsRouter.get("/", async (ctx: Context) => {
-  ctx.body = "Index for all the cats.";
+  const cats = Cat.find();
+  ctx.body = cats;
 });
 
 catsRouter.get("/:id", async (ctx: Context) => {

@@ -1,4 +1,5 @@
 import * as Koa from "koa";
+import "reflect-metadata";
 import { createConnection } from "typeorm";
 import * as winston from "winston";
 import rootRouter from "./src/routes";
