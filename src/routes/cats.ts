@@ -18,4 +18,16 @@ catsRouter.get("/:id", async (ctx: Context) => {
   }
 });
 
+catsRouter.post("/", async (ctx: Context) => {
+  const catParams = ctx.request.body;
+  const cat = Cat.create({
+    age: catParams.age,
+    firstName: catParams.firstName,
+    lastName: catParams.lastName,
+  });
+
+  await cat.save();
+  ctx.body = cat;
+});
+
 export default catsRouter;
