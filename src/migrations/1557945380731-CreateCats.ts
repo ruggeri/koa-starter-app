@@ -6,26 +6,26 @@ export class CreateCats1557945380731 implements MigrationInterface {
       name: "cats",
       columns: [
         {
-          "name": "id",
-          "type": "int",
-          "isPrimary": true,
-          "isNullable": false,
+          name: "id",
+          type: "int",
+          isNullable: false,
+          isPrimary: true,
         },
         {
-          "name": "first_name",
-          "type": "varchar",
-          "isNullable": false,
+          name: "first_name",
+          type: "varchar",
+          isNullable: false,
         },
         {
-          "name": "last_name",
-          "type": "varchar",
-          "isNullable": false,
+          name: "last_name",
+          type: "varchar",
+          isNullable: false,
         },
         {
-          "name": "age",
-          "type": "int",
-          "isNullable": false,
-        }
+          name: "age",
+          type: "int",
+          isNullable: false,
+        },
       ],
     }));
   }

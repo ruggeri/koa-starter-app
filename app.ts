@@ -1,6 +1,7 @@
-import * as Koa from 'koa';
-import rootRouter from './src/routes';
-import { createConnection } from 'typeorm';
+import * as Koa from "koa";
+import { createConnection } from "typeorm";
+import * as winston from "winston";
+import rootRouter from "./src/routes";
 
 async function main() {
   // Initialize typeorm database connection.
@@ -13,7 +14,7 @@ async function main() {
   // Begin serving application.
   app.listen(3000);
 
-  console.log("Server running on port 3000!");
+  winston.log("info", "Server running on port 3000!");
 }
 
 main();
