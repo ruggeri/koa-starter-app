@@ -13,11 +13,15 @@ async function main() {
   const app = new Koa();
   app.use(bodyParser());
   app.use(async (ctx: Koa.Context, next) => {
-    const logCtx = ctx.toJSON();
-    logCtx.request.body = ctx.request.body;
-    logger.info(logCtx);
+    const requestJSON = ctx.request.toJSON();
+    requestJSON.body = ctx.request.body;
+    logger.info(requestJSON);
 
     await next();
+
+    const responseJSON = ctx.response.toJSON();
+    responseJSON.body = ctx.response.body;
+    logger.info(responseJSON);
   });
   app.use(rootRouter.routes());
 
