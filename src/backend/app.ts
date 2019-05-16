@@ -5,14 +5,14 @@ import { createConnection } from "typeorm";
 import rootRouter from "./routes";
 import logger from "./services/logger";
 
-async function main() {
+async function main(): Promise<void> {
   // Initialize typeorm database connection.
   await createConnection();
 
   // Initialize Koa application.
   const koaApp = new Koa();
   koaApp.use(bodyParser());
-  koaApp.use(async (ctx: Koa.Context, next) => {
+  koaApp.use(async (ctx: Koa.Context, next): Promise<void> => {
     const requestJSON = ctx.request.toJSON();
     requestJSON.body = ctx.request.body;
     logger.info(requestJSON);

@@ -14,7 +14,7 @@ export class Cat extends BaseEntity {
   @Column({ name: "age" })
   public age: number;
 
-  @ManyToMany((type) => Cat)
+  @ManyToMany((): typeof Cat => Cat)
   @JoinTable({
     name: "friendships",
     joinColumn: { name: "friend_id1" },
