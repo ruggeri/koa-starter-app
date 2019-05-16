@@ -1,11 +1,8 @@
 import * as React from "react";
+// import { Cat } from "../../models/cat";
 
-export default function CatsList() {
-  const [cats, setCats] = React.useState(() => {
-    return [{ name: "Gizmo" }];
-  });
-
-  const catLis = cats.map((cat) => <li>{cat.name}</li>);
+export default function CatsList({ cats }: { cats: { firstName: string }[] }) {
+  const catLis = cats.map((cat) => <li>{cat.firstName}</li>);
 
   return (
     <ul>
