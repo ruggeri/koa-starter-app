@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "serve": "./node_modules/.bin/nodemon --watch dist dist/app.js",
-    "start:dev": "./node_modules/.bin/tsc && ./node_modules/.bin/concurrently npm:watch:ts npm:serve",
+    "serve:backend": "./node_modules/.bin/nodemon --watch dist/ dist/app.js",
+    "serve:frontend": "./node_modules/.bin/nodemon --watch dist/src/frontend dist/src/frontend/app.js",
+    "start:dev": "./node_modules/.bin/tsc && ./node_modules/.bin/concurrently npm:watch:ts npm:serve:backend npm:serve:frontend",
     "tslint": "./node_modules/.bin/tslint -p .",
     "typeorm": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm",
     "watch:ts": "./node_modules/.bin/tsc -w"
