@@ -14,6 +14,8 @@
 * Setup `tslint` (still must run `yarn run tslint --fix`)...
   * But can install `tslint` for VSCode so that this auto highlights...
 
+* I've started to set up `next`. It lives in `src/frontend`.
+
 * How can I best specify whether a property should be in params?
 * I want to add React in.
 * I want to add Next.

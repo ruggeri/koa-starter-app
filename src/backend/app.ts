@@ -2,8 +2,8 @@ import * as Koa from "koa";
 import * as bodyParser from "koa-bodyparser";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import rootRouter from "./src/routes";
-import logger from "./src/services/logger";
+import logger from "../services/logger";
+import rootRouter from "./routes";
 
 async function main() {
   // Initialize typeorm database connection.

@@ -4,10 +4,10 @@
   "synchronize": false,
   "logging": true,
   "entities": [
-    "dist/src/models/**/*.js"
+    "dist/models/**/*.js"
   ],
   "migrations": [
-    "dist/src/migrations/**/*.js"
+    "dist/migrations/**/*.js"
   ],
   "cli": {
     "entitiesDir": "src/models",

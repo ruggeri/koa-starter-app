@@ -8,9 +8,8 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "jsx": "react"
-},
+  },
   "include": [
-    "app.ts",
     "./src/**/*"
   ]
 }
