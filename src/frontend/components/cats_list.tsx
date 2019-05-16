@@ -1,7 +1,7 @@
 import * as React from "react";
-// import { Cat } from "../../models/cat";
+import { Cat } from "../types";
 
-export default function CatsList({ cats }: { cats: { firstName: string }[] }) {
+export default function CatsList({ cats }: { cats: Cat[] }) {
   const catLis = cats.map((cat) => <li>{cat.firstName}</li>);
 
   return (

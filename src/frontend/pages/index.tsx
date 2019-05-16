@@ -1,9 +1,9 @@
 import axios from "axios";
 import * as React from "react";
-// import { Cat } from "../../models/cat";
 import CatsList from "../components/cats_list";
+import { Cat } from "../types";
 
-function Index({ cats }: { cats: { firstName: string }[] }) {
+function Index({ cats }: { cats: Cat[] }) {
   return <CatsList cats={cats}></CatsList>;
 }
 
