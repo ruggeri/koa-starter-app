@@ -3,7 +3,7 @@
     "module": "commonjs",
     "target": "es2017",
     "noImplicitAny": true,
-    "outDir": "../dist",
+    "outDir": "../../dist/backend/",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
@@ -11,7 +11,4 @@
   "include": [
     "./**/*"
   ],
-  "exclude": [
-    "./frontend/**"
-  ]
 }

@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "serve": "wait-on dist/app.js && ./node_modules/.bin/nodemon --watch dist/ dist/app.js",
+    "serve": "./node_modules/.bin/concurrently npm:serve:backend npm:serve:frontend",
+    "serve:backend": "wait-on dist/backend && ./node_modules/.bin/nodemon --watch dist/backend/ dist/backend/app.js",
+    "serve:frontend": "wait-on dist/frontend && ./node_modules/.bin/next dist/frontend -p 8080",
     "start:dev": "rm -rf dist/* && ./node_modules/.bin/concurrently npm:ts:watch npm:serve",
     "ts:lint": "./node_modules/.bin/tslint -p .",
     "ts:watch": "./node_modules/.bin/concurrently npm:ts:watch:backend npm:ts:watch:frontend",
-    "ts:watch:backend": "./node_modules/.bin/tsc --build src/tsconfig.json -w --preserveWatchOutput",
+    "ts:watch:backend": "./node_modules/.bin/tsc --build src/backend/tsconfig.json -w --preserveWatchOutput",
     "ts:watch:frontend": "./node_modules/.bin/tsc --build src/frontend/tsconfig.json -w --preserveWatchOutput",
     "typeorm": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm"
   },

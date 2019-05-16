@@ -4,13 +4,13 @@ module.exports = {
   "synchronize": false,
   "logging": true,
   "entities": [
-    "dist/models/**/*.js"
+    "dist/backend/models/**/*.js"
   ],
   "migrations": [
-    "dist/migrations/**/*.js"
+    "dist/backend/migrations/**/*.js"
   ],
   "cli": {
-    "entitiesDir": "src/models",
-    "migrationsDir": "src/migrations"
+    "entitiesDir": "src/backend/models",
+    "migrationsDir": "src/backend/migrations"
   }
 };
