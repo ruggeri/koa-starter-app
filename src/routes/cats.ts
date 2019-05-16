@@ -1,8 +1,8 @@
 import { Context } from "koa";
 import * as Router from "koa-router";
 import { getManager } from "typeorm";
-import { Cat } from "../../models/cat";
-import { Friendship } from "../../models/friendship";
+import { Cat } from "../models/cat";
+import { Friendship } from "../models/friendship";
 
 const catsRouter = new Router();
 

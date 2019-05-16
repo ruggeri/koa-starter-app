@@ -3,13 +3,15 @@
     "module": "commonjs",
     "target": "es2017",
     "noImplicitAny": true,
-    "outDir": "./dist",
+    "outDir": "../dist",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "jsx": "react"
+    "experimentalDecorators": true
   },
   "include": [
-    "./src/**/*"
+    "./**/*"
+  ],
+  "exclude": [
+    "./frontend/**"
   ]
 }

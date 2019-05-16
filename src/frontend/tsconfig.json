@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "jsx": "preserve",
+    "outDir": "../../dist/frontend/"
+  },
+  "include": [
+    "./**/*"
+  ],
+  "exclude": [
+    "../services/**/*"
+  ]
+}

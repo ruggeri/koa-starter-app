@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "serve:backend": "wait-on dist/backend/app.js && ./node_modules/.bin/nodemon --watch dist/ --ignore dist/frontend dist/backend/app.js",
-    "serve:frontend": "wait-on dist/frontend/app.js && ./node_modules/.bin/nodemon --watch dist --ignore dist/backend dist/frontend/app.js",
-    "start:dev": "rm -r dist/* && ./node_modules/.bin/concurrently npm:watch:ts npm:serve:backend npm:serve:frontend",
-    "tslint": "./node_modules/.bin/tslint -p .",
-    "typeorm": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm",
-    "watch:ts": "./node_modules/.bin/tsc -w --preserveWatchOutput"
+    "serve": "wait-on dist/app.js && ./node_modules/.bin/nodemon --watch dist/ dist/app.js",
+    "start:dev": "rm -rf dist/* && ./node_modules/.bin/concurrently npm:ts:watch npm:serve",
+    "ts:lint": "./node_modules/.bin/tslint -p .",
+    "ts:watch": "./node_modules/.bin/concurrently npm:ts:watch:backend npm:ts:watch:frontend",
+    "ts:watch:backend": "./node_modules/.bin/tsc --build src/tsconfig.json -w --preserveWatchOutput",
+    "ts:watch:frontend": "./node_modules/.bin/tsc --build src/frontend/tsconfig.json -w --preserveWatchOutput",
+    "typeorm": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm"
   },
   "dependencies": {
     "@types/koa": "^2.0.48",

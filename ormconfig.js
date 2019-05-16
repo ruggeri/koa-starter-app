@@ -1,4 +1,4 @@
-{
+module.exports = {
   "type": "postgres",
   "database": "koa_starter_app",
   "synchronize": false,
@@ -13,4 +13,4 @@
     "entitiesDir": "src/models",
     "migrationsDir": "src/migrations"
   }
-}
+};
