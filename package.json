@@ -4,9 +4,7 @@
   "license": "MIT",
   "scripts": {
     "eslint": "./node_modules/.bin/nodemon --watch src/ -e \"js ts\" --exec \"./node_modules/.bin/eslint \\\"src/**\\\" || true\"",
-    "serve": "./node_modules/.bin/concurrently npm:serve:backend npm:serve:frontend",
-    "serve:backend": "wait-on dist/backend && ./node_modules/.bin/nodemon --watch dist/backend/ dist/backend/app.js",
-    "serve:frontend": "wait-on dist/frontend && ./node_modules/.bin/next dist/frontend -p 8080",
+    "serve": "wait-on dist/backend && ./node_modules/.bin/nodemon --watch dist/backend/ dist/backend/app.js",
     "start:dev": "rm -rf dist/* && ./node_modules/.bin/concurrently npm:ts:watch npm:serve",
     "ts:watch": "./node_modules/.bin/concurrently npm:ts:watch:backend npm:ts:watch:frontend",
     "ts:watch:backend": "./node_modules/.bin/tsc --build src/backend/tsconfig.json -w --preserveWatchOutput",
