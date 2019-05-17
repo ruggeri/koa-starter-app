@@ -26,8 +26,12 @@ module.exports = {
     "@typescript-eslint",
   ],
   rules: {
-    "quotes": ["error", "double"],
     "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/no-explicit-any": ["error"],
+    "arrow-parens": ["error", "always"],
+    "class-methods-use-this": ["warn"],
+    "import/prefer-default-export": false,
+    "quotes": ["error", "double"],
   },
   settings: {
     "import/resolver": {

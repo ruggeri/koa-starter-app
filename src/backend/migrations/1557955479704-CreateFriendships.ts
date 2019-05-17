@@ -1,7 +1,14 @@
-import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+} from "typeorm";
 
+/* prettier-ignore */
 export class CreateFriendships1557955479704 implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<any> {
+  /* eslint-disable-next-line class-methods-use-this */
+  public async up(queryRunner: QueryRunner): Promise<void> {
     const table = new Table({
       name: "friendships",
       columns: [
@@ -20,22 +27,27 @@ export class CreateFriendships1557955479704 implements MigrationInterface {
       ],
     });
 
-    table.addForeignKey(new TableForeignKey({
-      columnNames: ["friend_id1"],
-      referencedTableName: "cats",
-      referencedColumnNames: ["id"],
-    }));
+    table.addForeignKey(
+      new TableForeignKey({
+        columnNames: ["friend_id1"],
+        referencedTableName: "cats",
+        referencedColumnNames: ["id"],
+      }),
+    );
 
-    table.addForeignKey(new TableForeignKey({
-      columnNames: ["friend_id2"],
-      referencedTableName: "cats",
-      referencedColumnNames: ["id"],
-    }));
+    table.addForeignKey(
+      new TableForeignKey({
+        columnNames: ["friend_id2"],
+        referencedTableName: "cats",
+        referencedColumnNames: ["id"],
+      }),
+    );
 
     await queryRunner.createTable(table);
   }
 
-  public async down(queryRunner: QueryRunner): Promise<any> {
+  /* eslint-disable-next-line class-methods-use-this */
+  public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropTable("friendships");
   }
 }
