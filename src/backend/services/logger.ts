@@ -5,9 +5,7 @@ const logger = winston.createLogger({
     winston.format.timestamp(),
     winston.format.prettyPrint(),
   ),
-  transports: [
-    new winston.transports.Console(),
-  ],
+  transports: [new winston.transports.Console()],
 });
 
 export default logger;

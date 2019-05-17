@@ -1,6 +1,6 @@
-import { Context } from "koa";
+import * as Koa from "koa";
 import * as Router from "koa-router";
-import { getManager } from "typeorm";
+import * as typeorm from "typeorm";
 import { Cat } from "../models/cat";
 import { Friendship } from "../models/friendship";
 
@@ -8,7 +8,7 @@ const catsRouter = new Router();
 
 catsRouter.get(
   "/",
-  async (ctx: Context): Promise<void> => {
+  async (ctx: Koa.Context): Promise<void> => {
     const cats = await Cat.find();
     ctx.body = cats;
   },
@@ -16,7 +16,7 @@ catsRouter.get(
 
 catsRouter.get(
   "/:id",
-  async (ctx: Context): Promise<void> => {
+  async (ctx: Koa.Context): Promise<void> => {
     const cat = await Cat.findOne(ctx.params.id, {
       relations: ["friends"],
     });
@@ -31,7 +31,7 @@ catsRouter.get(
 
 catsRouter.post(
   "/",
-  async (ctx: Context): Promise<void> => {
+  async (ctx: Koa.Context): Promise<void> => {
     const catParams = ctx.request.body;
     const cat = Cat.create({
       age: catParams.age,
@@ -46,7 +46,7 @@ catsRouter.post(
 
 catsRouter.post(
   "/:id/friendships",
-  async (ctx: Context): Promise<void> => {
+  async (ctx: Koa.Context): Promise<void> => {
     const friendship1 = Friendship.create({
       friendId1: ctx.params.id,
       friendId2: ctx.request.body.friendId,
@@ -57,7 +57,7 @@ catsRouter.post(
       friendId2: ctx.params.id,
     });
 
-    await getManager().transaction(
+    await typeorm.getManager().transaction(
       async (manager): Promise<void> => {
         await manager.save(friendship1);
         await manager.save(friendship2);
