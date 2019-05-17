@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "module": "commonjs",
-    "target": "es2017",
-    "noImplicitAny": true,
     "outDir": "../../dist/backend/",
     "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "target": "es2017"
   },
   "include": [
     "./**/*"

@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
     "module": "esnext",
     "moduleResolution": "node",
-    "target": "esnext",
-    "jsx": "preserve",
     "noImplicitAny": true,
-    "outDir": "../../dist/frontend/"
+    "outDir": "../../dist/frontend/",
+    "strict": true,
+    "target": "esnext"
   },
   "include": [
     "./**/*"
