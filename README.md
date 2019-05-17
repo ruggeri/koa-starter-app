@@ -1,22 +1,44 @@
-* Installed `yarn global add typescript`.
-* Installed `yarn global add concurrently`.
-* Installed `yarn global add nodemon`.
+**Scripts**
 
-* `yarn run watch:ts` recompiles `.ts` files and writes to `./dist/`.
-* `yarn run serve` uses `nodemon` to watch `./dist/` and run
-  `./dist/app.js`.
-* `yarn start:dev` runs both concurrently.
+* `eslint`: watches `src` and runs `eslint`.
+* `serve`: uses `nodemon` to watch `dist/backend` and run
+  `dist/backend/app.js`.
+* `start:dev`: uses `concurrently` to run `ts:watch` and `serve`.
+* `ts:watch`, `ts:watch:backend`, `ts:watch:frontend`: watches
+  all/backend/frontend directories and recompiles typescript code.
 
-* Using `koa` (next generation of Express).
-    * Using `koa-router` and `koa-bodyparser`.
+**Packages**
 
-* Setup `typeorm` and migrations.
-* Setup `tslint` (still must run `yarn run tslint --fix`)...
-  * But can install `tslint` for VSCode so that this auto highlights...
+* `koa`
+  * `koa-bodyparser` and `koa-router`.
+  * Use `@hapi/joi` for validations.
+* `next`
+  * All `next` content lives in `src/frontend`, it is served via `next`
+    which is served via `koa`.
+  * I compile the frontend typescript => javascript with esnext style
+    imports. Then `next`'s server does the rest of the transpilation.
+* `typeorm`
+  * Needs `reflect-metadata`.
+  * Also using their migrations support.
 
-* I've started to set up `next`. It lives in `src/frontend`.
+**Dev Packages**
 
-* How can I best specify whether a property should be in params?
-* I want to add React in.
-* I want to add Next.
-* I want to look into GraphQL.
+* Yarn stuff:
+  * `concurrently` for running simultaneous jobs.
+  * `nodemon` for restarting servers.
+  * `wait-on` for waiting for something to get built.
+* `eslint`
+  * I have a number of plugins (especially around typescript).
+  * I use `prettier` for formatting.
+* typescript
+  * I also have `ts-node`, which could be handy sometime.
+
+## TODO
+
+* Review package.jsons.
+* I want to look into GraphQL and Relay.
+* Randoms
+    * Testing? Jest?
+    * Ramda? (I haven't needed that yet.)
+    * Rxjs?
+    * Authorization.

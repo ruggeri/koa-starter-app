@@ -1,12 +1,15 @@
 module.exports = {
   extends: [
-    "airbnb-base",
+    "airbnb",
     "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
     "plugin:react/recommended",
   ],
   parser: "@typescript-eslint/parser",
   plugins: [
     "@typescript-eslint",
+    "import",
     "json",
     "react",
   ],
@@ -15,8 +18,9 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": ["error"],
     "arrow-parens": ["error", "always"],
     "class-methods-use-this": ["warn"],
-    "import/prefer-default-export": false,
+    "import/prefer-default-export": 0,
     "quotes": ["error", "double"],
+    "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
   },
   settings: {
     "import/resolver": {

@@ -8,7 +8,7 @@ interface IndexProps {
 }
 
 function Index({ cats }: IndexProps): JSX.Element {
-  return <CatsList cats={cats}></CatsList>;
+  return <CatsList cats={cats} />;
 }
 
 Index.getInitialProps = async (): Promise<IndexProps> => {
