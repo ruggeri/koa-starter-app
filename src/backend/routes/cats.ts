@@ -1,5 +1,7 @@
+import * as joi from "@hapi/joi";
 import * as Koa from "koa";
 import * as Router from "koa-router";
+import * as _ from "lodash";
 import * as typeorm from "typeorm";
 import { Cat } from "../models/cat";
 import { Friendship } from "../models/friendship";
@@ -14,10 +16,25 @@ catsRouter.get(
   },
 );
 
+const catsShowParamsSchema = joi.object().keys({
+  id: joi.number().required(),
+});
+
 catsRouter.get(
   "/:id",
   async (ctx: Koa.Context): Promise<void> => {
-    const cat = await Cat.findOne(ctx.params.id, {
+    const { value: params, error } = joi.validate(
+      { id: ctx.params.id },
+      catsShowParamsSchema,
+    );
+
+    if (error) {
+      ctx.body = error.message;
+      ctx.status = 400;
+      return;
+    }
+
+    const cat = await Cat.findOne(params, {
       relations: ["friends"],
     });
 
@@ -29,10 +46,35 @@ catsRouter.get(
   },
 );
 
+const catsCreateParamsSchema = joi.object().keys({
+  age: joi
+    .number()
+    .required()
+    .strict(),
+  firstName: joi
+    .string()
+    .required()
+    .strict(),
+  lastName: joi
+    .string()
+    .required()
+    .strict(),
+});
+
 catsRouter.post(
   "/",
   async (ctx: Koa.Context): Promise<void> => {
-    const catParams = ctx.request.body;
+    const { value: catParams, error } = joi.validate(
+      _.pick(ctx.request.body, ["age", "firstName", "lastName"]),
+      catsCreateParamsSchema,
+    );
+
+    if (error) {
+      ctx.body = error.message;
+      ctx.status = 422;
+      return;
+    }
+
     const cat = Cat.create({
       age: catParams.age,
       firstName: catParams.firstName,
@@ -44,17 +86,33 @@ catsRouter.post(
   },
 );
 
+const catsFriendshipCreateParamsSchema = joi.object().keys({
+  id: joi.number().required(),
+  friendId: joi.number().required(),
+});
+
 catsRouter.post(
   "/:id/friendships",
   async (ctx: Koa.Context): Promise<void> => {
+    const { value: friendshipParams, error } = joi.validate(
+      { id: ctx.params.id, friendId: ctx.request.body.friendId },
+      catsFriendshipCreateParamsSchema,
+    );
+
+    if (error) {
+      ctx.body = error.message;
+      ctx.status = 422;
+      return;
+    }
+
     const friendship1 = Friendship.create({
-      friendId1: ctx.params.id,
-      friendId2: ctx.request.body.friendId,
+      friendId1: friendshipParams.id,
+      friendId2: friendshipParams.friendId,
     });
 
     const friendship2 = Friendship.create({
-      friendId1: ctx.request.body.friendId,
-      friendId2: ctx.params.id,
+      friendId1: friendshipParams.friendId,
+      friendId2: friendshipParams.id,
     });
 
     await typeorm.getManager().transaction(
