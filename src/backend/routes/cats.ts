@@ -3,8 +3,7 @@ import * as Koa from "koa";
 import * as Router from "koa-router";
 import * as _ from "lodash";
 import * as typeorm from "typeorm";
-import { Cat } from "../models/cat";
-import { Friendship } from "../models/friendship";
+import { Cat, Friendship } from "../models";
 
 const catsRouter = new Router();
 

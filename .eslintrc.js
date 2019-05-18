@@ -21,6 +21,9 @@ module.exports = {
     "import/prefer-default-export": 0,
     "quotes": ["error", "double"],
     "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
+    // Otherwise it tries to sort alphabetically within "groups":
+    // defined by how many things are imported (one, multiple?).
+    "sort-imports": [2, { "ignoreDeclarationSort": true }],
   },
   settings: {
     "import/resolver": {
