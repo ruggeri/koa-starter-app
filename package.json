@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "compile:dev": "./node_modules/.bin/concurrently npm:eslint npm:ts:watch",
     "eslint": "./node_modules/.bin/nodemon --watch src/ -e \"js ts\" --exec \"./node_modules/.bin/eslint \\\"src/**\\\" || true\"",
-    "serve": "wait-on dist/backend && ./node_modules/.bin/nodemon --watch dist/backend/ dist/backend/app.js",
-    "start:dev": "rm -rf dist/* && ./node_modules/.bin/concurrently npm:ts:watch npm:serve",
+    "serve:dev": "wait-on dist/backend && ./node_modules/.bin/nodemon --watch dist/backend/ dist/backend/app.js",
     "ts:watch": "./node_modules/.bin/concurrently npm:ts:watch:backend npm:ts:watch:frontend",
-    "ts:watch:backend": "./node_modules/.bin/tsc --build src/backend/tsconfig.json -w --preserveWatchOutput",
-    "ts:watch:frontend": "./node_modules/.bin/tsc --build src/frontend/tsconfig.json -w --preserveWatchOutput",
+    "ts:watch:backend": "./node_modules/.bin/tsc --build src/backend/tsconfig.json -w --preserveWatchOutput --pretty",
+    "ts:watch:frontend": "./node_modules/.bin/tsc --build src/frontend/tsconfig.json -w --preserveWatchOutput --pretty",
     "typeorm": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm"
   },
   "dependencies": {
